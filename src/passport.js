@@ -21,6 +21,7 @@ passport.use(
         "http://ec2-3-39-25-156.ap-northeast-2.compute.amazonaws.com:4000/auth/google/callback",
     },
     function (accessToken, refreshToken, profile, done) {
+      console.log(accessToken);
       return done(null, profile);
     }
   )
