@@ -18,7 +18,7 @@ passport.use(
       clientID: process.env.CLIENT_ID,
       clientSecret: process.env.CLIENT_SECRET,
       callbackURL:
-        "https://ec2-3-39-25-156.ap-northeast-2.compute.amazonaws.com/auth/google/callback",
+        "https://ec2-3-39-25-156.ap-northeast-2.compute.amazonaws.com:4000/auth/google/callback",
     },
     function (accessToken, refreshToken, profile, done) {
       return done(null, profile);
