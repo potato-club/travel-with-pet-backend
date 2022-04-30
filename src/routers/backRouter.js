@@ -1,5 +1,6 @@
 import express from "express";
 import {
+  home,
   sortRecent,
   sortHeart,
   travelMore,
@@ -30,6 +31,7 @@ import { avatarUpload } from "../middleware.js";
 
 const backRouter = express.Router();
 
+backRouter.get("/", home);
 backRouter.get("/sortRecent", sortRecent);
 backRouter.get("/sortHeart", sortHeart);
 

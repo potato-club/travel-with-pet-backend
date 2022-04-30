@@ -7,6 +7,10 @@ import Comment from "../models/Comment.js";
 //카테고리별로 (여행, 음식점, 숙소, 기타)
 //->사진, 내용, 태그, 지역,, 작성자, 작성일, 하트수
 
+export const home = (req, res) => {
+  return res.send(req.user.name);
+};
+
 export const sortRecent = async (req, res) => {
   const travel = await InfoWriting.find({ category: "여행" }).limit(4);
   const store = await InfoWriting.find({ category: "음식점" }).limit(4);
