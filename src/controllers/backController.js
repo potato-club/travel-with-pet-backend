@@ -205,6 +205,7 @@ export const success = async (req, res) => {
   res.locals.name = name;
 
   let user = await User.findOne({ email });
+  console.log(user);
   if (!user) {
     console.log("No user");
     user = await User.create({
