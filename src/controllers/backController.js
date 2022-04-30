@@ -8,6 +8,7 @@ import Comment from "../models/Comment.js";
 //->사진, 내용, 태그, 지역,, 작성자, 작성일, 하트수
 
 export const home = (req, res) => {
+  console.log(req.session);
   return res.send(req.user.name);
 };
 
