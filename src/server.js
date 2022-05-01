@@ -6,7 +6,9 @@ import MongoStore from "connect-mongo";
 
 import passport from "passport";
 
-import backRouter from "./routers/backRouter.js";
+import commentRouter from "./routers/commentRouter.js";
+import userRouter from "./routers/userRouter.js";
+import writingRouter from "./routers/writingRouter.js";
 
 import { localsMiddleware } from "./middleware.js";
 import "./passport.js";
@@ -51,10 +53,12 @@ app.get(
   "/auth/google/callback",
   passport.authenticate("google", { failureRedirect: "/fail" }),
   function (req, res) {
-    res.redirect("/success");
+    res.redirect("/users/login/success");
   }
 );
 
-app.use("/", backRouter);
+app.use("/comment", commentRouter);
+app.use("/users", userRouter);
+app.use("/writing", writingRouter);
 
 app.listen(4000, () => console.log(`listening on port ${4000}!`));
