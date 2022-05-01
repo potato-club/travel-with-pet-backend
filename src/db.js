@@ -1,10 +1,12 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
 
-mongoose.connect("mongodb://127.0.0.1:27017/travel-pet-backend");
+dotenv.config();
+
+mongoose.connect(process.env.DB_URL);
 
 const db = mongoose.connection;
 
-console.log("good!");
 const handleOpen = () => console.log("✅ Connected to DB");
 const handleError = (error) => console.log("❌ DB Error", error);
 
