@@ -57,12 +57,11 @@ app.get(
   }
 );
 
-app.get("/", home);
-
 const home = (req, res) => {
   console.log(req.session);
   return res.send(req.user.name);
 };
+app.get("/", home);
 
 app.use("/comment", commentRouter);
 app.use("/users", userRouter);
