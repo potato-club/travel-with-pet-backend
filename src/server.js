@@ -57,7 +57,7 @@ app.get(
   }
 );
 
-app.use("/", home);
+app.get("/", home);
 
 const home = (req, res) => {
   console.log(req.session);
