@@ -1,6 +1,6 @@
 import express from "express";
 import {
-  home,
+  // home,
   myComment,
   createComment,
   infoDeleteComment,
@@ -9,11 +9,11 @@ import {
 
 const commentRouter = express.Router();
 
-commentRouter.get("/", home);
+// commentRouter.get("/", home);
 
 commentRouter.post("/:id([0-9a-f]{24})", createComment);
-commentRouter.delete("/info/:id([0-9a-f]{24})", infoDeleteComment);
-commentRouter.delete("/daily/:id([0-9a-f]{24})", storyDeleteComment);
+commentRouter.delete("/infocomment/:id([0-9a-f]{24})", infoDeleteComment);
+commentRouter.delete("/dailycomment/:id([0-9a-f]{24})", storyDeleteComment);
 
 commentRouter.get("/my", myComment);
 

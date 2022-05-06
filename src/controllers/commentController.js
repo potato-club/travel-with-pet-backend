@@ -71,11 +71,17 @@ export const storyDeleteComment = async (req, res) => {
   return res.sendStatus(201);
 };
 
-//heart
-
 //mypage의 내가쓴 댓글
 
 export const myComment = async (req, res) => {
+  const { _id } = req.session;
+  const comment = await Comment.find(_id);
+
+  return res.send(comment);
+};
+
+//heart 내가 좋아요한 글
+export const myHeart = async (req, res) => {
   const { _id } = req.session;
   const comment = await Comment.find(_id);
 
