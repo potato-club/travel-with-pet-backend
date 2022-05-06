@@ -54,7 +54,7 @@ export const dailyPostUpload = async (req, res) => {
   }
 };
 
-//ok
+//ok ->발전 필요!
 export const infoSearch = async (req, res) => {
   const { key } = req.query;
   console.log(key);
@@ -90,7 +90,7 @@ export const sortRecent = async (req, res) => {
   const place = await InfoWriting.find({ category: "숙소" }).limit(4);
   const etc = await InfoWriting.find({ category: "기타" }).limit(4);
 
-  return req.send({ travel, store, place, etc });
+  return res.send({ travel, store, place, etc });
 };
 
 export const sortHeart = async (req, res) => {
