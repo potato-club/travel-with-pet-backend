@@ -76,7 +76,6 @@ export const storyDeleteComment = async (req, res) => {
 //ok
 export const infomyComment = async (req, res) => {
   const { _id } = req.session;
-  const info = await InfoWriting.exists(infowriting);
   const comment = await Comment.find(_id, {
     infowriting: { $exists: true },
   }).populate("infowriting");
