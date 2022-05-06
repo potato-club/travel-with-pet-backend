@@ -54,6 +54,7 @@ export const dailyPostUpload = async (req, res) => {
   }
 };
 
+//ok
 export const infoSearch = async (req, res) => {
   const { key } = req.query;
   console.log(key);
@@ -69,6 +70,7 @@ export const infoSearch = async (req, res) => {
   return res.send(list);
 };
 
+//ok
 export const storySearch = async (req, res) => {
   const { key } = req.query;
   let list = [];
@@ -165,6 +167,7 @@ export const storyShow = async (req, res) => {
 };
 
 //글 상세페이지
+//ok
 export const infoSee = async (req, res) => {
   const { id } = req.params;
   const writing = await InfoWriting.findById(id)
@@ -175,7 +178,7 @@ export const infoSee = async (req, res) => {
   }
   return res.send(writing);
 };
-
+//ok
 export const dailySee = async (req, res) => {
   const { id } = req.params;
   const writing = await StoryWriting.findById(id)

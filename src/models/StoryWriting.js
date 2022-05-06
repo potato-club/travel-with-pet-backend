@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const infoWritingSchema = new mongoose.Schema({
+const storyWritingSchema = new mongoose.Schema({
   title: { type: String },
   tags: { type: String },
   contents: { type: String },
@@ -13,5 +13,5 @@ const infoWritingSchema = new mongoose.Schema({
   owner: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "User" },
 });
 
-const StoryWriting = mongoose.model("StoryWriting", infoWritingSchema);
+const StoryWriting = mongoose.model("StoryWriting", storyWritingSchema);
 export default StoryWriting;
