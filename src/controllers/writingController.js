@@ -74,15 +74,12 @@ export const infoSearch = async (req, res) => {
 export const storySearch = async (req, res) => {
   const { key } = req.query;
   let list = [];
-  let search = "";
-
   if (key) {
     search = await InfoWriting.find({
       title: {
         $regex: new RegExp(`${key}$`, "i"),
       },
     }).populate("owner");
-    list.push(search);
   }
   return res.send(list);
 };
