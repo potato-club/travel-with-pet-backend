@@ -3,6 +3,7 @@ import InfoWriting from "../models/InfoWriting.js";
 import StoryWriting from "../models/StoryWriting.js";
 import Comment from "../models/Comment.js";
 
+//ok
 export const success = async (req, res) => {
   const { email, name, picture } = req.user._json;
 
@@ -23,6 +24,7 @@ export const success = async (req, res) => {
   req.session.user = user;
   return res.redirect("/");
 };
+//ok
 export const fail = (req, res) => {
   return res.send("You Failed to log in!");
 };
@@ -31,7 +33,7 @@ export const logout = (req, res) => {
   req.session.destroy();
   return res.redirect("/");
 };
-
+//ok
 export const postEdit = async (req, res) => {
   const {
     session: {
@@ -53,6 +55,7 @@ export const postEdit = async (req, res) => {
   return res.redirect("/profile");
 };
 
+//ok
 export const allSee = async (req, res) => {
   const { _id } = req.session;
   const infoWriting = await InfoWriting.find(_id);

@@ -3,6 +3,7 @@ import InfoWriting from "../models/InfoWriting.js";
 import StoryWriting from "../models/StoryWriting.js";
 import Comment from "../models/Comment.js";
 
+//ok
 export const infoPostUpload = async (req, res) => {
   const {
     user: { _id },
@@ -29,7 +30,7 @@ export const infoPostUpload = async (req, res) => {
     return res.status(400).redirect("/info");
   }
 };
-
+//ok
 export const dailyPostUpload = async (req, res) => {
   const {
     user: { _id },
@@ -57,15 +58,13 @@ export const infoSearch = async (req, res) => {
   const { key } = req.query;
   console.log(key);
   let list = [];
-  let search = "";
   if (key) {
-    search = await InfoWriting.find({
+    list = await InfoWriting.find({
       title: {
         $regex: new RegExp(`${key}$`, "i"),
       },
     }).populate("owner");
-    console.log(search);
-    list.push(search);
+    console.log(list);
   }
   return res.send(list);
 };
@@ -114,6 +113,7 @@ export const sortHeart = async (req, res) => {
 
 //정보 글 보여주기(더보기)("/foodMore")
 
+//ok
 export const travelMore = async (req, res) => {
   const travel = await InfoWriting.find({ category: "여행" });
   return res.send({ travel });
