@@ -64,6 +64,7 @@ export const infoSearch = async (req, res) => {
         $regex: new RegExp(`${key}$`, "i"),
       },
     }).populate("owner");
+    console.log(search);
     list.push(search);
   }
   return res.send(list);
