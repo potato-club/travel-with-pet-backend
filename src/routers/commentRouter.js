@@ -1,10 +1,11 @@
 import express from "express";
 import {
   // home,
-  myComment,
+  dailymyComment,
   createComment,
   infoDeleteComment,
   storyDeleteComment,
+  infomyComment,
 } from "../controllers/commentController.js";
 
 const commentRouter = express.Router();
@@ -15,7 +16,8 @@ commentRouter.post("/:id([0-9a-f]{24})", createComment);
 commentRouter.delete("/infocomment/:id([0-9a-f]{24})", infoDeleteComment);
 commentRouter.delete("/dailycomment/:id([0-9a-f]{24})", storyDeleteComment);
 
-commentRouter.get("/my", myComment);
+commentRouter.get("/infocomment", infomyComment);
+commentRouter.get("/dailycomment", dailymyComment);
 
 // backRouter.get("writing/:id([0-9a-f]{24})", see);
 //backRouter.get("user/:id([0-9a-f]{24})", allSee);

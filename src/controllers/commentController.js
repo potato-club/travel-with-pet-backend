@@ -73,8 +73,8 @@ export const storyDeleteComment = async (req, res) => {
 };
 
 //mypage의 내가쓴 댓글
-
-export const myComment = async (req, res) => {
+//ok
+export const infomyComment = async (req, res) => {
   const { _id } = req.session;
   const comment = await Comment.find(_id).populate("infowriting");
 
@@ -82,7 +82,14 @@ export const myComment = async (req, res) => {
 
   return res.send(comment);
 };
+export const dailymyComment = async (req, res) => {
+  const { _id } = req.session;
+  const comment = await Comment.find(_id).populate("dailywriting");
 
+  // const comment.infowriting
+
+  return res.send(comment);
+};
 //heart 내가 좋아요한 글
 export const myHeart = async (req, res) => {
   const { _id } = req.session;
