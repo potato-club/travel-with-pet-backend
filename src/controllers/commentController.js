@@ -22,7 +22,7 @@ export const createComment = async (req, res) => {
     const comment = await Comment.create({
       text,
       owner: user._id,
-      writing: id,
+      dailywriting: id,
     });
     storyWriting.comments.push(comment._id);
     storyWriting.save();
@@ -32,7 +32,7 @@ export const createComment = async (req, res) => {
   const comment = await Comment.create({
     text,
     owner: user._id,
-    writing: id,
+    infowriting: id,
   });
   infoWriting.comments.push(comment._id);
   infoWriting.save();

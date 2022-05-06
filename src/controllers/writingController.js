@@ -55,6 +55,7 @@ export const dailyPostUpload = async (req, res) => {
 
 export const infoSearch = async (req, res) => {
   const { key } = req.query;
+  console.log(key);
   let list = [];
   if (key) {
     list = await InfoWriting.find({
@@ -102,51 +103,51 @@ export const sortHeart = async (req, res) => {
     .sort({ heart: "desc" })
     .limit(4);
 
-  return req.send({ travel, store, place, etc });
+  return res.send({ travel, store, place, etc });
 };
 
 //정보 글 보여주기(더보기)("/foodMore")
 
 export const travelMore = async (req, res) => {
   const travel = await InfoWriting.find({ category: "여행" });
-  return req.send({ travel });
+  return res.send({ travel });
 };
 export const storeMore = async (req, res) => {
   const store = await InfoWriting.find({ category: "음식점" });
-  return req.send({ store });
+  return res.send({ store });
 };
 export const placeMore = async (req, res) => {
   const place = await InfoWriting.find({ category: "숙소" });
-  return req.send({ place });
+  return res.send({ place });
 };
 export const etcMore = async (req, res) => {
   const etc = await InfoWriting.find({ category: "기타" });
-  return req.send({ etc });
+  return res.send({ etc });
 };
 
 export const hearttravelMore = async (req, res) => {
   const travel = await InfoWriting.find({ category: "여행" }).sort({
     heart: "desc",
   });
-  return req.send({ travel });
+  return res.send({ travel });
 };
 export const heartstoreMore = async (req, res) => {
   const store = await InfoWriting.find({ category: "음식점" }).sort({
     heart: "desc",
   });
-  return req.send({ store });
+  return res.send({ store });
 };
 export const heartplaceMore = async (req, res) => {
   const place = await InfoWriting.find({ category: "숙소" }).sort({
     heart: "desc",
   });
-  return req.send({ place });
+  return res.send({ place });
 };
 export const heartetcMore = async (req, res) => {
   const etc = await InfoWriting.find({ category: "기타" }).sort({
     heart: "desc",
   });
-  return req.send({ etc });
+  return res.send({ etc });
 };
 
 //일상글 보여주기

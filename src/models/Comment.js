@@ -3,10 +3,13 @@ import mongoose from "mongoose";
 const commentSchema = new mongoose.Schema({
   text: { type: String },
   createdAt: { type: Date, required: true, default: Date.now },
-  writing: {
+  infowriting: {
     type: mongoose.Schema.Types.ObjectId,
-    required: true,
-    ref: "Writing",
+    ref: "InfoWriting",
+  },
+  dailywriting: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "StoryWriting",
   },
   owner: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "User" },
 });
