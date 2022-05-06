@@ -43,9 +43,9 @@ export const dailyPostUpload = async (req, res) => {
       contents,
       owner: _id,
     });
-    const user = await User.findById(_id);
-    user.storyWriting.push(newWriting._id);
-    user.save();
+    // const user = await User.findById(_id);
+    // user.storyWriting.push(newWriting._id);
+    // user.save();
     return res.redirect("/");
   } catch (error) {
     console.log(error);
