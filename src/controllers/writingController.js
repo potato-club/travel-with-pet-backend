@@ -75,7 +75,7 @@ export const storySearch = async (req, res) => {
   const { key } = req.query;
   let list = [];
   if (key) {
-    list = await InfoWriting.find({
+    list = await StoryWriting.find({
       title: {
         $regex: new RegExp(`${key}$`, "i"),
       },
