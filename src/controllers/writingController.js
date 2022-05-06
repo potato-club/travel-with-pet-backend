@@ -158,7 +158,18 @@ export const storyShow = async (req, res) => {
 };
 
 //글 상세페이지
-export const see = async (req, res) => {
+export const infoSee = async (req, res) => {
+  const { id } = req.params;
+  const writing = await InfoWriting.findById(id)
+    .populate("owner")
+    .populate("comments");
+  if (!writing) {
+    return res.send("Nothing");
+  }
+  return res.send(writing);
+};
+
+export const dailySee = async (req, res) => {
   const { id } = req.params;
   const writing = await StoryWriting.findById(id)
     .populate("owner")

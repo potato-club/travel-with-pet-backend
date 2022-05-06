@@ -15,7 +15,8 @@ import {
   heartplaceMore,
   heartetcMore,
   storyShow,
-  see,
+  infoSee,
+  dailySee,
   postInfoEdit,
   postStoryEdit,
 } from "../controllers/writingController.js";
@@ -44,6 +45,7 @@ writingRouter.get("/all/heart/store", heartstoreMore);
 writingRouter.get("/edit/info", postInfoEdit);
 writingRouter.get("/edit/daily", postStoryEdit);
 
-writingRouter.get("/:id([0-9a-f]{24})", see);
+writingRouter.get("/info/:id([0-9a-f]{24})", infoSee);
+writingRouter.get("/daily/:id([0-9a-f]{24})", dailySee);
 
 export default writingRouter;
