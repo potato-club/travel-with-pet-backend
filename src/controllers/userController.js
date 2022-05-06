@@ -2,7 +2,6 @@ import User from "../models/User.js";
 import InfoWriting from "../models/InfoWriting.js";
 import StoryWriting from "../models/StoryWriting.js";
 import Comment from "../models/Comment.js";
-import { reset } from "nodemon";
 
 export const success = async (req, res) => {
   const { email, name, picture } = req.user._json;
