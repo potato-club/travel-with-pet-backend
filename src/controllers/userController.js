@@ -2,6 +2,7 @@ import User from "../models/User.js";
 import InfoWriting from "../models/InfoWriting.js";
 import StoryWriting from "../models/StoryWriting.js";
 import Comment from "../models/Comment.js";
+import { reset } from "nodemon";
 
 export const success = async (req, res) => {
   const { email, name, picture } = req.user._json;
@@ -58,5 +59,5 @@ export const allSee = async (req, res) => {
   const infoWriting = await InfoWriting.find(_id);
   const storyWriting = await StoryWriting.find(_id);
 
-  return req.send(infoWriting, storyWriting);
+  return res.send(infoWriting, storyWriting);
 };
