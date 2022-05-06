@@ -8,6 +8,7 @@ import Comment from "../models/Comment.js";
 //->사진, 내용, 태그, 지역,, 작성자, 작성일, 하트수
 
 //comment
+//ok
 export const createComment = async (req, res) => {
   const {
     session: { user },
@@ -75,7 +76,9 @@ export const storyDeleteComment = async (req, res) => {
 
 export const myComment = async (req, res) => {
   const { _id } = req.session;
-  const comment = await Comment.find(_id);
+  const comment = await Comment.find(_id).populate("infowriting");
+
+  // const comment.infowriting
 
   return res.send(comment);
 };

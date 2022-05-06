@@ -84,6 +84,7 @@ export const storySearch = async (req, res) => {
   return res.send(list);
 };
 
+//ok
 export const sortRecent = async (req, res) => {
   const travel = await InfoWriting.find({ category: "여행" })
     .sort({ createdAt: "desc" })
@@ -166,6 +167,7 @@ export const heartetcMore = async (req, res) => {
 //일상글 보여주기
 //글 번호, 제목, 태그, 댓글수, 작성자, 작성일
 
+//ok
 export const storyShow = async (req, res) => {
   const list = await StoryWriting.find().populate("owner");
   return res.send(list);
