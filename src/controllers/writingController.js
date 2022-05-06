@@ -85,10 +85,18 @@ export const storySearch = async (req, res) => {
 };
 
 export const sortRecent = async (req, res) => {
-  const travel = await InfoWriting.find({ category: "여행" }).limit(4);
-  const store = await InfoWriting.find({ category: "음식점" }).limit(4);
-  const place = await InfoWriting.find({ category: "숙소" }).limit(4);
-  const etc = await InfoWriting.find({ category: "기타" }).limit(4);
+  const travel = await InfoWriting.find({ category: "여행" })
+    .sort({ createdAt: "desc" })
+    .limit(4);
+  const store = await InfoWriting.find({ category: "음식점" })
+    .sort({ createdAt: "desc" })
+    .limit(4);
+  const place = await InfoWriting.find({ category: "숙소" })
+    .sort({ createdAt: "desc" })
+    .limit(4);
+  const etc = await InfoWriting.find({ category: "기타" })
+    .sort({ createdAt: "desc" })
+    .limit(4);
 
   return res.send({ travel, store, place, etc });
 };
