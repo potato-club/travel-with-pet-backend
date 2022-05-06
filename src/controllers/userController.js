@@ -58,5 +58,7 @@ export const allSee = async (req, res) => {
   const infoWriting = await InfoWriting.find(_id);
   const storyWriting = await StoryWriting.find(_id);
 
-  return res.send(infoWriting, storyWriting);
+  const myWriting = { infoWriting, storyWriting };
+
+  return res.send(myWriting);
 };
