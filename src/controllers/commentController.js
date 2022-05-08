@@ -161,7 +161,7 @@ export const clickHeart = async (req, res) => {
   if (!infoWriting) {
     let storyheart = storyWriting.heart;
     const updatedcount = await StoryWriting.findByIdAndUpdate(
-      _id,
+      id,
       {
         heart: storyheart + 1,
       },
@@ -180,7 +180,7 @@ export const clickHeart = async (req, res) => {
   }
   let infoheart = infoWriting.heart;
   const updatedcount = await InfoWriting.findByIdAndUpdate(
-    _id,
+    id,
     {
       heart: infoheart + 1,
     },
