@@ -24,7 +24,7 @@ commentRouter.get("/dailycomment", dailymyComment);
 
 commentRouter.get("/dailyheart", myStoryHeart);
 
-commentRouter.get("/clickheart/:id([0-9a-f]{24}", clickHeart);
+commentRouter.get("/clickheart/:id([0-9a-f]{24})", clickHeart);
 
 commentRouter.get("/infoheart", myInfoHeart);
 commentRouter.get("/dailyheart", myStoryHeart);
