@@ -184,10 +184,9 @@ export const clickHeart = async (req, res) => {
           count: 1,
         }
       );
-      console.log(createstoryheart);
     } else {
-      console.log(createstoryheart);
       createstoryheart = await StoryHeart.find({ writingId: id });
+      console.log(createstoryheart);
       const updateHeart = await StoryHeart.findByIdAndUpdate(
         createstoryheart._id,
         {
