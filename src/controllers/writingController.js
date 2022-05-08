@@ -181,7 +181,9 @@ export const heartetcMore = async (req, res) => {
 
 //ok
 export const storyShow = async (req, res) => {
-  const list = await StoryWriting.find().populate("owner");
+  const list = await StoryWriting.find()
+    .sort({ createdAt: "desc" })
+    .populate("owner");
   return res.send(list);
 };
 
@@ -213,8 +215,6 @@ export const dailySee = async (req, res) => {
   if (!writing) {
     return res.send("Nothing");
   }
-
-  console.log(writing.comments[0] === undefined);
 
   if (writing.comments[0] === undefined) {
     console.log("no comments");

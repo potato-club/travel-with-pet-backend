@@ -24,13 +24,15 @@ const writingRouter = express.Router();
 
 //ok
 writingRouter.post("/info", infoPostUpload);
-//ok
 writingRouter.post("/daily", dailyPostUpload);
 
+//ok
 writingRouter.get("/search/info", infoSearch);
 writingRouter.get("/search/daily", storySearch);
 
+//ok
 writingRouter.get("/sort/recent", sortRecent);
+
 writingRouter.get("/sort/heart", sortHeart);
 
 writingRouter.get("/all/daily", storyShow);
@@ -47,6 +49,7 @@ writingRouter.get("/all/heart/store", heartstoreMore);
 writingRouter.get("/edit/info", postInfoEdit);
 writingRouter.get("/edit/daily", postStoryEdit);
 
+//ok
 writingRouter.get("/info/:id([0-9a-f]{24})", infoSee);
 writingRouter.get("/daily/:id([0-9a-f]{24})", dailySee);
 
