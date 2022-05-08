@@ -23,7 +23,7 @@ export const createComment = async (req, res) => {
   const storyWriting = await StoryWriting.findById(id);
 
   if (!infoWriting) {
-    let storycomment = storyWriting.commentCount;
+    let infocomment = infoWriting.commentCount;
     const updatedCount = await StoryWriting.findByIdAndUpdate(
       id,
       {
@@ -42,7 +42,7 @@ export const createComment = async (req, res) => {
     //???
     return res.status(201).json({ newCommentId: comment._id });
   }
-  let infocomment = infoWriting.commentCount;
+  let storycomment = storyWriting.commentCount;
 
   const updatedCount = await InfoWriting.findByIdAndUpdate(
     id,
