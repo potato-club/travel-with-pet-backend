@@ -190,7 +190,7 @@ export const clickHeart = async (req, res) => {
         }
       );
 
-      createstoryheart.owner.push(user._id);
+      // createstoryheart.owner.push(user._id);
     }
 
     return res.redirect(`/writing/daily/${id}`);
@@ -226,7 +226,7 @@ export const clickHeart = async (req, res) => {
       },
       { new: true }
     );
-    createinfoheart[1].owner.push(user._id);
+    // createinfoheart[1].owner.push(user._id);
     // InfoHeart.save();
   }
 
