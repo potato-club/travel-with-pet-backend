@@ -214,7 +214,7 @@ export const dailySee = async (req, res) => {
     return res.send("Nothing");
   }
 
-  if (!writing.comments) {
+  if (writing.comments[0] === undefined) {
     const storywriting = await StoryWriting.findById(id).populate("owner");
     return res.send(storywriting);
   }
