@@ -158,10 +158,8 @@ export const clickHeart = async (req, res) => {
   const infoWriting = await InfoWriting.findById(id);
   const storyWriting = await StoryWriting.findById(id);
 
-  let infoheart = infoWriting.heart;
-  let storyheart = storyWriting.heart;
-
   if (!infoWriting) {
+    let storyheart = storyWriting.heart;
     const updatedcount = await StoryWriting.findByIdAndUpdate(
       _id,
       {
@@ -178,8 +176,9 @@ export const clickHeart = async (req, res) => {
     );
     StoryHeart.owner.push(user._id);
     StoryHeart.save();
-    return res.redirect(`/daily/${id}`);
+    return res.redirect(`/writing/daily/${id}`);
   }
+  let infoheart = infoWriting.heart;
   const updatedcount = await InfoWriting.findByIdAndUpdate(
     _id,
     {
@@ -195,5 +194,5 @@ export const clickHeart = async (req, res) => {
   );
   InfoHeart.onwer.push(user._id);
   InfoHeart.save();
-  return res.redirect(`/info/${id}`);
+  return res.redirect(`/writing/info/${id}`);
 };
