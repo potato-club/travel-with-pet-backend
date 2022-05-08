@@ -193,7 +193,7 @@ export const infoSee = async (req, res) => {
   if (!writing) {
     return res.send("Nothing");
   }
-
+  console.log(writing.comments);
   if (!writing.comments) {
     const infowriting = await InfoWriting.findById(id).populate("owner");
     return res.send(infowriting);
