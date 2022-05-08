@@ -158,6 +158,9 @@ export const clickHeart = async (req, res) => {
   const infoWriting = await InfoWriting.findById(id);
   const storyWriting = await StoryWriting.findById(id);
 
+  console.log(storyWriting.heart);
+  console.log(typeof storyWriting.heart);
+
   if (!infoWriting) {
     let storyheart = storyWriting.heart;
     const updatedcount = await StoryWriting.findByIdAndUpdate(
@@ -167,15 +170,22 @@ export const clickHeart = async (req, res) => {
       },
       { new: true }
     );
+    if (storyWriting.heart === 0) {
+      const createstoryheart = await StoryHeart.create({
+        owner: user._id,
+        writingId: id,
+      });
+    } else {
+      const updateHeart = await StoryHeart.findByIdAndUpdate(
+        createstoryheart._id,
+        {
+          count: storyheart + 1,
+        }
+      );
+      StoryHeart.owner.push(user._id);
+      StoryHeart.save();
+    }
 
-    const updateHeart = await StoryHeart.findByIdAndUpdate(
-      { writingId: id },
-      {
-        count: storyheart + 1,
-      }
-    );
-    StoryHeart.owner.push(user._id);
-    StoryHeart.save();
     return res.redirect(`/writing/daily/${id}`);
   }
   let infoheart = infoWriting.heart;
@@ -186,13 +196,21 @@ export const clickHeart = async (req, res) => {
     },
     { new: true }
   );
-  const updateHeart = await InfoHeart.findByIdAndUpdate(
-    { writingId: id },
-    {
-      count: infoheart + 1,
-    }
-  );
-  InfoHeart.onwer.push(user._id);
-  InfoHeart.save();
+  if (infoWriting.heart === 0) {
+    const createinfoheart = await InfoHeart.create({
+      owner: user._id,
+      writingId: id,
+    });
+  } else {
+    const updateHeart = await InfoHeart.findByIdAndUpdate(
+      createstoryheart._id,
+      {
+        count: infoheart + 1,
+      }
+    );
+    InfoHeart.onwer.push(user._id);
+    InfoHeart.save();
+  }
+
   return res.redirect(`/writing/info/${id}`);
 };
