@@ -25,6 +25,7 @@ export const infoPostUpload = async (req, res) => {
       count: 0,
       writingId: newWriting._id,
     });
+    newWriting.comments.push("");
     // const user = await User.findById(_id);
     // user.infowWiting.push(newWriting._id);
     // user.save();
@@ -54,6 +55,8 @@ export const dailyPostUpload = async (req, res) => {
       count: 0,
       writingId: newWriting._id,
     });
+    newWriting.comments.push("");
+
     // const user = await User.findById(_id);
     // user.storyWriting.push(newWriting._id);
     // user.save();
