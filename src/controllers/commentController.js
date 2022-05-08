@@ -158,6 +158,9 @@ export const clickHeart = async (req, res) => {
   const infoWriting = await InfoWriting.findById(id);
   const storyWriting = await StoryWriting.findById(id);
 
+  let createstoryheart;
+  let createinfoheart;
+
   console.log(storyWriting.heart);
   console.log(typeof storyWriting.heart);
 
@@ -171,7 +174,7 @@ export const clickHeart = async (req, res) => {
       { new: true }
     );
     if (storyWriting.heart === 0) {
-      const createstoryheart = await StoryHeart.create({
+      createstoryheart = await StoryHeart.create({
         owner: user._id,
         writingId: id,
       });
@@ -197,7 +200,7 @@ export const clickHeart = async (req, res) => {
     { new: true }
   );
   if (infoWriting.heart === 0) {
-    const createinfoheart = await InfoHeart.create({
+    createinfoheart = await InfoHeart.create({
       owner: user._id,
       writingId: id,
     });
