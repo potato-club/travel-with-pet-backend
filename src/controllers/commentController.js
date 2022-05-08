@@ -134,9 +134,9 @@ export const dailymyComment = async (req, res) => {
 export const myInfoHeart = async (req, res) => {
   const { _id } = req.session;
 
-  const heartWriting = await InfoHeart.find({
-    owner: [`${_id}`],
-  }).populate("writingId");
+  const heartWriting = await InfoHeart.find()
+    .in("owner", ["테스트", "ㅇ"])
+    .populate("writingId");
 
   return res.send(heartWriting);
 };
@@ -223,7 +223,7 @@ export const clickHeart = async (req, res) => {
       },
       { new: true }
     );
-    createinfoheart.owner.push(user._id);
+    createinfoheart[1].owner.push(user._id);
     // InfoHeart.save();
   }
 
