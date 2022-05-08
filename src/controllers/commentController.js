@@ -202,6 +202,7 @@ export const clickHeart = async (req, res) => {
   }
   let infoheart = infoWriting.heart;
   if (infoWriting.heart === 0) {
+    console.log(`0: my heart is ${infoheart}`);
     createinfoheart = await InfoHeart.create({
       owner: user._id,
       writingId: id,
@@ -210,6 +211,7 @@ export const clickHeart = async (req, res) => {
     const updateHeart = await InfoHeart.findByIdAndUpdate(createinfoheart._id, {
       count: 1,
     });
+    console.log(`updateHeart : ${updateHeart}`);
     const updatedcount = await InfoWriting.findByIdAndUpdate(
       id,
       {
@@ -218,6 +220,7 @@ export const clickHeart = async (req, res) => {
       { new: true }
     );
   } else {
+    console.log(`1: my heart is ${infoheart}`);
     createinfoheart = await InfoHeart.find({ writingId: id });
     console.log(createinfoheart);
     const updateHeart = await InfoHeart.findByIdAndUpdate(createinfoheart._id, {
