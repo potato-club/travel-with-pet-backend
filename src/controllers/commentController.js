@@ -178,11 +178,16 @@ export const clickHeart = async (req, res) => {
         owner: user._id,
         writingId: id,
       });
-
+      const updateHeart = await StoryHeart.findByIdAndUpdate(
+        createstoryheart._id,
+        {
+          count: 1,
+        }
+      );
       console.log(createstoryheart);
     } else {
       console.log(createstoryheart);
-
+      createstoryheart = await StoryHeart.find({ writingId: id });
       const updateHeart = await StoryHeart.findByIdAndUpdate(
         createstoryheart._id,
         {
@@ -208,13 +213,18 @@ export const clickHeart = async (req, res) => {
       owner: user._id,
       writingId: id,
     });
+    const updateHeart = await InfoHeart.findByIdAndUpdate(createinfoheart._id, {
+      count: 1,
+    });
   } else {
-    const updateHeart = await InfoHeart.findByIdAndUpdate(
+    createinfoheart = await StoryHeart.find({ writingId: id });
+    const updateHeart = await StoryHeart.findByIdAndUpdate(
       createstoryheart._id,
       {
         count: infoheart + 1,
       }
     );
+
     InfoHeart.onwer.push(user._id);
     InfoHeart.save();
   }
