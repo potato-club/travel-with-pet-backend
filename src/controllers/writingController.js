@@ -28,7 +28,7 @@ export const infoPostUpload = async (req, res) => {
     // const user = await User.findById(_id);
     // user.infowWiting.push(newWriting._id);
     // user.save();
-    return res.redirect(`/info/${newWriting._id}`);
+    return res.redirect(`/writing/info/${newWriting._id}`);
 
     // return res.redirect("/");
   } catch (error) {
@@ -57,7 +57,7 @@ export const dailyPostUpload = async (req, res) => {
     // const user = await User.findById(_id);
     // user.storyWriting.push(newWriting._id);
     // user.save();
-    return res.redirect(`/daily/${newWriting._id}`);
+    return res.redirect(`/writing/daily/${newWriting._id}`);
   } catch (error) {
     console.log(error);
     //작성하는 장소로 이동시켜야함! (post말고!!)
