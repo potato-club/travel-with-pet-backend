@@ -201,27 +201,35 @@ export const clickHeart = async (req, res) => {
     return res.redirect(`/writing/daily/${id}`);
   }
   let infoheart = infoWriting.heart;
-  const updatedcount = await InfoWriting.findByIdAndUpdate(
-    id,
-    {
-      heart: infoheart + 1,
-    },
-    { new: true }
-  );
   if (infoWriting.heart === 0) {
     createinfoheart = await InfoHeart.create({
       owner: user._id,
       writingId: id,
     });
+    console.log(createinfoheart);
     const updateHeart = await InfoHeart.findByIdAndUpdate(createinfoheart._id, {
       count: 1,
     });
+    const updatedcount = await InfoWriting.findByIdAndUpdate(
+      id,
+      {
+        heart: infoheart + 1,
+      },
+      { new: true }
+    );
   } else {
     createinfoheart = await InfoHeart.find({ writingId: id });
     console.log(createinfoheart);
     const updateHeart = await InfoHeart.findByIdAndUpdate(createinfoheart._id, {
       count: infoheart + 1,
     });
+    const updatedcount = await InfoWriting.findByIdAndUpdate(
+      id,
+      {
+        heart: infoheart + 1,
+      },
+      { new: true }
+    );
     if (user._id in createinfoheart.owner) {
       return res.redirect(`/writing/daily/${id}`);
     }
