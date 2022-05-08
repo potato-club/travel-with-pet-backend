@@ -37,10 +37,12 @@ writingRouter.get("/sort/heart", sortHeart);
 //ok
 writingRouter.get("/all/daily", storyShow);
 
+//ok
 writingRouter.get("/all/recent/travel", travelMore);
 writingRouter.get("/all/recent/etc", etcMore);
 writingRouter.get("/all/recent/place", placeMore);
 writingRouter.get("/all/recent/store", storeMore);
+
 writingRouter.get("/all/heart/travel", hearttravelMore);
 writingRouter.get("/all/heart/etc", heartetcMore);
 writingRouter.get("/all/heart/place", heartplaceMore);

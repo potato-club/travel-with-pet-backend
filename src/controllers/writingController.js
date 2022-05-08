@@ -261,7 +261,7 @@ export const postInfoEdit = async (req, res) => {
     detailCity,
     tags,
   });
-  return res.redirect(`/writing/${id}`);
+  return res.redirect(`/writing/info/${id}`);
 };
 
 export const postStoryEdit = async (req, res) => {
@@ -282,5 +282,5 @@ export const postStoryEdit = async (req, res) => {
     tags,
     contents,
   });
-  return res.redirect(`/writing/${id}`);
+  return res.redirect(`/writing/daily/${id}`);
 };
