@@ -135,19 +135,27 @@ export const sortHeart = async (req, res) => {
 
 //ok
 export const travelMore = async (req, res) => {
-  const travel = await InfoWriting.find({ category: "여행" });
+  const travel = await InfoWriting.find({ category: "여행" }).sort({
+    createdAt: "desc",
+  });
   return res.send({ travel });
 };
 export const storeMore = async (req, res) => {
-  const store = await InfoWriting.find({ category: "음식점" });
+  const store = await InfoWriting.find({ category: "음식점" }).sort({
+    createdAt: "desc",
+  });
   return res.send({ store });
 };
 export const placeMore = async (req, res) => {
-  const place = await InfoWriting.find({ category: "숙소" });
+  const place = await InfoWriting.find({ category: "숙소" }).sort({
+    createdAt: "desc",
+  });
   return res.send({ place });
 };
 export const etcMore = async (req, res) => {
-  const etc = await InfoWriting.find({ category: "기타" });
+  const etc = await InfoWriting.find({ category: "기타" }).sort({
+    createdAt: "desc",
+  });
   return res.send({ etc });
 };
 

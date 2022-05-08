@@ -34,7 +34,7 @@ writingRouter.get("/search/daily", storySearch);
 writingRouter.get("/sort/recent", sortRecent);
 
 writingRouter.get("/sort/heart", sortHeart);
-
+//ok
 writingRouter.get("/all/daily", storyShow);
 
 writingRouter.get("/all/recent/travel", travelMore);
