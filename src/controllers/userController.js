@@ -1,7 +1,7 @@
 import User from "../models/User.js";
 import InfoWriting from "../models/InfoWriting.js";
 import StoryWriting from "../models/StoryWriting.js";
-import Comment from "../models/Comment.js";
+import Comment from "../models/StoryComment.js";
 
 //ok
 export const success = async (req, res) => {

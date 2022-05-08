@@ -1,7 +1,7 @@
-import User from "../models/User.js";
 import InfoWriting from "../models/InfoWriting.js";
 import StoryWriting from "../models/StoryWriting.js";
-import Comment from "../models/Comment.js";
+import InfoHeart from "../models/InfoHeart.js";
+import StoryHeart from "../models/StoryHeart.js";
 
 //ok
 export const infoPostUpload = async (req, res) => {
@@ -9,16 +9,21 @@ export const infoPostUpload = async (req, res) => {
     user: { _id },
   } = req.session;
   //확인 필요
-  const { title, contents, category, city, detailCity, tags } = req.body;
+  const { title, image, contents, category, city, detailCity, tags } = req.body;
   try {
     const newWriting = await InfoWriting.create({
       title,
+      image,
       category,
       contents,
       city,
       detailCity,
       tags,
       owner: _id,
+    });
+    const newHeart = await InfoHeart.create({
+      count: 0,
+      writingId: newWriting._id,
     });
     // const user = await User.findById(_id);
     // user.infowWiting.push(newWriting._id);
@@ -27,7 +32,7 @@ export const infoPostUpload = async (req, res) => {
   } catch (error) {
     console.log(error);
     //작성하는 장소로 이동시켜야함!
-    return res.status(400).redirect("/info");
+    return res.status(400).redirect(`/info/${newWriting._id}`);
   }
 };
 //ok
@@ -43,6 +48,10 @@ export const dailyPostUpload = async (req, res) => {
       contents,
       owner: _id,
     });
+    const newHeart = await StoryHeart.create({
+      count: 0,
+      writingId: newWriting._id,
+    });
     // const user = await User.findById(_id);
     // user.storyWriting.push(newWriting._id);
     // user.save();
@@ -50,7 +59,7 @@ export const dailyPostUpload = async (req, res) => {
   } catch (error) {
     console.log(error);
     //작성하는 장소로 이동시켜야함! (post말고!!)
-    return res.status(400).redirect("/daily");
+    return res.status(400).redirect(`/daily/${newWriting._id}`);
   }
 };
 
@@ -204,7 +213,7 @@ export const postInfoEdit = async (req, res) => {
   const {
     user: { _id },
   } = req.session;
-  const { title, contents, category, city, detailCity, tags } = req.body;
+  const { title, image, contents, category, city, detailCity, tags } = req.body;
   const infoWriting = await InfoWriting.exists({ _id: id });
   if (!infoWriting) {
     return res.status(404).render("404", { pageTitle: "Video not found." });
@@ -214,6 +223,7 @@ export const postInfoEdit = async (req, res) => {
   }
   await InfoWriting.findByIdAndUpdate(id, {
     title,
+    image,
     contents,
     category,
     city,

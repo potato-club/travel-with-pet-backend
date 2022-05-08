@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 
 const infoWritingSchema = new mongoose.Schema({
   title: { type: String },
+  image: { type: String },
   category: { type: String },
   city: { type: String },
   detailCity: { type: String },
