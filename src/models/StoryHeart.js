@@ -2,9 +2,7 @@ import mongoose from "mongoose";
 
 const storyHeartSchema = new mongoose.Schema({
   count: { type: Number, default: 0, required: true },
-  owner: [
-    { type: mongoose.Schema.Types.ObjectId, required: true, ref: "User" },
-  ],
+  owner: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
   writingId: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,

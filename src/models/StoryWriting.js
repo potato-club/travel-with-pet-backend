@@ -4,12 +4,10 @@ const storyWritingSchema = new mongoose.Schema({
   title: { type: String },
   tags: { type: String },
   contents: { type: String },
-  heart: { type: Number, default: 0, required: true },
+  heart: { type: Number, default: 0 },
   createdAt: { type: Date, required: true, default: Date.now },
   commentCount: { type: Number, default: 0 },
-  comments: [
-    { type: mongoose.Schema.Types.ObjectId, required: true, ref: "Comment" },
-  ],
+  comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }],
   owner: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "User" },
 });
 
