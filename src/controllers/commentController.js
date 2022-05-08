@@ -135,7 +135,7 @@ export const myInfoHeart = async (req, res) => {
   const { _id } = req.session;
 
   const heartWriting = await InfoHeart.find({
-    owner: { $in: [`${_id}`] },
+    owner: [`${_id}`],
   }).populate("writingId");
 
   return res.send(heartWriting);
