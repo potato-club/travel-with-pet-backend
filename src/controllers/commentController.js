@@ -23,11 +23,13 @@ export const createComment = async (req, res) => {
   const storyWriting = await StoryWriting.findById(id);
 
   if (!infoWriting) {
-    let infocomment = infoWriting.commentCount;
+    let storycomment = storyWriting.commentCount;
+    console.log(storycomment);
+
     const updatedCount = await StoryWriting.findByIdAndUpdate(
       id,
       {
-        commentCount: infocomment + 1,
+        commentCount: storycomment + 1,
       },
       { new: true }
     );
@@ -42,12 +44,12 @@ export const createComment = async (req, res) => {
     //???
     return res.status(201).json({ newCommentId: comment._id });
   }
-  let storycomment = storyWriting.commentCount;
+  let infocomment = infoWriting.commentCount;
 
   const updatedCount = await InfoWriting.findByIdAndUpdate(
     id,
     {
-      commentCount: storycomment + 1,
+      commentCount: infocomment + 1,
     },
     { new: true }
   );
