@@ -28,11 +28,13 @@ export const infoPostUpload = async (req, res) => {
     // const user = await User.findById(_id);
     // user.infowWiting.push(newWriting._id);
     // user.save();
-    return res.redirect("/");
+    return res.redirect(`/info/${newWriting._id}`);
+
+    // return res.redirect("/");
   } catch (error) {
     console.log(error);
     //작성하는 장소로 이동시켜야함!
-    return res.status(400).redirect(`/info/${newWriting._id}`);
+    return res.status(400).redirect("/");
   }
 };
 //ok
@@ -55,11 +57,11 @@ export const dailyPostUpload = async (req, res) => {
     // const user = await User.findById(_id);
     // user.storyWriting.push(newWriting._id);
     // user.save();
-    return res.redirect("/");
+    return res.redirect(`/daily/${newWriting._id}`);
   } catch (error) {
     console.log(error);
     //작성하는 장소로 이동시켜야함! (post말고!!)
-    return res.status(400).redirect(`/daily/${newWriting._id}`);
+    return res.status(400).redirect("/");
   }
 };
 
