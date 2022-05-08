@@ -226,7 +226,7 @@ export const clickHeart = async (req, res) => {
       return res.redirect(`/writing/daily/${id}`);
     }
     createinfoheart.owner.push(user._id);
-    InfoHeart.save();
+    // InfoHeart.save();
   }
 
   return res.redirect(`/writing/info/${id}`);
