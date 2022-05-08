@@ -191,24 +191,39 @@ export const storyShow = async (req, res) => {
 //ok
 export const infoSee = async (req, res) => {
   const { id } = req.params;
-  const writing = await InfoWriting.findById(id)
-    .populate("owner")
-    .populate("comments");
+  const writing = await InfoWriting.findById(id);
   if (!writing) {
     return res.send("Nothing");
   }
-  return res.send(writing);
+
+  if (!writing.comments) {
+    const infowriting = await InfoWriting.findById(id).populate("owner");
+    return res.send(infowriting);
+  }
+  const infowriting = await InfoWriting.findById(id)
+    .populate("owner")
+    .populate("comments");
+
+  return res.send(infowriting);
 };
 //ok
 export const dailySee = async (req, res) => {
   const { id } = req.params;
-  const writing = await StoryWriting.findById(id)
-    .populate("owner")
-    .populate("comments");
+  const writing = await StoryWriting.findById(id);
+
   if (!writing) {
     return res.send("Nothing");
   }
-  return res.send(writing);
+
+  if (!writing.comments) {
+    const storywriting = await StoryWriting.findById(id).populate("owner");
+    return res.send(storywriting);
+  }
+  const storywriting = await StoryWriting.findById(id)
+    .populate("owner")
+    .populate("comments");
+
+  return res.send(storywriting);
 };
 
 //edit 만들기
