@@ -214,6 +214,8 @@ export const clickHeart = async (req, res) => {
     );
   } else {
     createinfoheart = await InfoHeart.find({ writingId: id });
+    console.log(createinfoheart._id);
+
     const updateHeart = await InfoHeart.findByIdAndUpdate(createinfoheart._id, {
       count: infoheart + 1,
     });
