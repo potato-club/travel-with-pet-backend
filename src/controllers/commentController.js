@@ -134,9 +134,9 @@ export const dailymyComment = async (req, res) => {
 export const myInfoHeart = async (req, res) => {
   const { _id } = req.session;
 
-  const heartWriting = await InfoHeart.find({ owner: _id }).populate(
-    "writingId"
-  );
+  const heartWriting = await InfoHeart.find({
+    owner: { $in: [`${_id}`] },
+  }).populate("writingId");
 
   return res.send(heartWriting);
 };
@@ -183,46 +183,24 @@ export const clickHeart = async (req, res) => {
       );
     } else {
       createstoryheart = await StoryHeart.find({ writingId: id });
-      console.log(createstoryheart);
       const updateHeart = await StoryHeart.findByIdAndUpdate(
         createstoryheart._id,
         {
           count: storyheart + 1,
         }
       );
-      console.log(createstoryheart.owner);
-      if (user._id in createstoryheart.owner) {
-        return res.redirect(`/writing/daily/${id}`);
-      }
+
       createstoryheart.owner.push(user._id);
-      StoryHeart.save();
     }
 
     return res.redirect(`/writing/daily/${id}`);
   }
   let infoheart = infoWriting.heart;
   if (infoWriting.heart === 0) {
-    console.log(`0: my heart is ${infoheart}`);
     createinfoheart = await InfoHeart.create({
       owner: user._id,
       writingId: id,
     });
-    console.log(createinfoheart);
-    const updateHeart = await InfoHeart.findByIdAndUpdate(createinfoheart._id, {
-      count: 1,
-    });
-    console.log(`updateHeart : ${updateHeart}`);
-    const updatedcount = await InfoWriting.findByIdAndUpdate(
-      id,
-      {
-        heart: infoheart + 1,
-      },
-      { new: true }
-    );
-  } else {
-    console.log(`1: my heart is ${infoheart}`);
-    createinfoheart = await InfoHeart.find({ writingId: id });
-    console.log(createinfoheart);
     const updateHeart = await InfoHeart.findByIdAndUpdate(createinfoheart._id, {
       count: infoheart + 1,
     });
@@ -233,9 +211,18 @@ export const clickHeart = async (req, res) => {
       },
       { new: true }
     );
-    if (user._id in createinfoheart.owner) {
-      return res.redirect(`/writing/daily/${id}`);
-    }
+  } else {
+    createinfoheart = await InfoHeart.find({ writingId: id });
+    const updateHeart = await InfoHeart.findByIdAndUpdate(createinfoheart._id, {
+      count: infoheart + 1,
+    });
+    const updatedcount = await InfoWriting.findByIdAndUpdate(
+      id,
+      {
+        heart: infoheart + 1,
+      },
+      { new: true }
+    );
     createinfoheart.owner.push(user._id);
     // InfoHeart.save();
   }
