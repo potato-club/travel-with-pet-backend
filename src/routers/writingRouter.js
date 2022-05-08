@@ -22,7 +22,9 @@ import {
 } from "../controllers/writingController.js";
 const writingRouter = express.Router();
 
+//ok
 writingRouter.post("/info", infoPostUpload);
+//ok
 writingRouter.post("/daily", dailyPostUpload);
 
 writingRouter.get("/search/info", infoSearch);
