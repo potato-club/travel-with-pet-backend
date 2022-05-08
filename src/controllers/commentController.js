@@ -194,6 +194,10 @@ export const clickHeart = async (req, res) => {
           count: storyheart + 1,
         }
       );
+      console.log(createinfoheart.owner);
+      if (user._id in createstoryheart.owner) {
+        return res.redirect(`/writing/daily/${id}`);
+      }
       StoryHeart.owner.push(user._id);
       StoryHeart.save();
     }
