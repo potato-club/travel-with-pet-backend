@@ -178,7 +178,11 @@ export const clickHeart = async (req, res) => {
         owner: user._id,
         writingId: id,
       });
+
+      console.log(createstoryheart);
     } else {
+      console.log(createstoryheart);
+
       const updateHeart = await StoryHeart.findByIdAndUpdate(
         createstoryheart._id,
         {
