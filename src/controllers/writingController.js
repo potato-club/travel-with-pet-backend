@@ -194,8 +194,9 @@ export const infoSee = async (req, res) => {
     return res.send("Nothing");
   }
   console.log(typeof writing.comments);
-  console.log(writing.comments === []);
-  console.log(writing.comments == []);
+  console.log(typeof Array(writing.commnets));
+  console.log(Array(writing.commnets) == []);
+  console.log(Array(writing.commnets) === []);
 
   if (writing.comments === []) {
     console.log("no comments");
