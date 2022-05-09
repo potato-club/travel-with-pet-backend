@@ -196,39 +196,21 @@ export const clickHeart = async (req, res) => {
     return res.redirect(`/writing/daily/${id}`);
   }
   let infoheart = infoWriting.heart;
-  if (infoWriting.heart === 0) {
-    createinfoheart = await InfoHeart.create({
-      owner: user._id,
-      writingId: id,
-    });
-    console.log(createinfoheart._id);
-    const updateHeart = await InfoHeart.findByIdAndUpdate(createinfoheart._id, {
-      count: infoheart + 1,
-    });
-    const updatedcount = await InfoWriting.findByIdAndUpdate(
-      id,
-      {
-        heart: infoheart + 1,
-      },
-      { new: true }
-    );
-  } else {
-    createinfoheart = await InfoHeart.find({ writingId: id });
-    console.log(createinfoheart._id);
 
-    const updateHeart = await InfoHeart.findByIdAndUpdate(createinfoheart._id, {
-      count: infoheart + 1,
-    });
-    const updatedcount = await InfoWriting.findByIdAndUpdate(
-      id,
-      {
-        heart: infoheart + 1,
-      },
-      { new: true }
-    );
-    // createinfoheart[1].owner.push(user._id);
-    // InfoHeart.save();
-  }
+  createinfoheart = await InfoHeart.find({ writingId: id });
+  console.log(createinfoheart._id);
+
+  createinfoheart.count = infoheart + 1;
+  InfoHeart.save();
+  const updatedcount = await InfoWriting.findByIdAndUpdate(
+    id,
+    {
+      heart: infoheart + 1,
+    },
+    { new: true }
+  );
+  // createinfoheart[1].owner.push(user._id);
+  // InfoHeart.save();
 
   return res.redirect(`/writing/info/${id}`);
 };
