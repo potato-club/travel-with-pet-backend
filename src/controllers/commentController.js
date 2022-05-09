@@ -200,8 +200,10 @@ export const clickHeart = async (req, res) => {
   createinfoheart = await InfoHeart.find({ writingId: id });
   console.log(createinfoheart._id);
 
+  console.log(`before ${createinfoheart.count}`);
   createinfoheart.count = infoheart + 1;
-  createinfoheart.save();
+  console.log(`after ${createinfoheart.count}`);
+
   const updatedcount = await InfoWriting.findByIdAndUpdate(
     id,
     {
@@ -209,8 +211,8 @@ export const clickHeart = async (req, res) => {
     },
     { new: true }
   );
-  // createinfoheart[1].owner.push(user._id);
-  // InfoHeart.save();
+  createinfoheart.owner.push(user._id);
+  createinfoheart.save();
 
   return res.redirect(`/writing/info/${id}`);
 };
