@@ -222,6 +222,7 @@ export const clickHeart = async (req, res) => {
       },
       { new: true }
     );
+    console.log(createinfoheart);
   } else {
     const exists = await InfoHeart.find({ owner: createinfoheart[0]._id });
     if (exists) {
