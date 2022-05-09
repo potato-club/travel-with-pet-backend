@@ -201,7 +201,7 @@ export const clickHeart = async (req, res) => {
   console.log(createinfoheart._id);
 
   createinfoheart.count = infoheart + 1;
-  InfoHeart.save();
+  createinfoheart.save();
   const updatedcount = await InfoWriting.findByIdAndUpdate(
     id,
     {
