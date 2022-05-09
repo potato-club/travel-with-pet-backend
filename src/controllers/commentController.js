@@ -133,21 +133,31 @@ export const dailymyComment = async (req, res) => {
 //heart 내가 좋아요한 글
 export const myInfoHeart = async (req, res) => {
   const { _id } = req.session;
+  const exists = await InfoHeart.find({ owner: _id });
 
-  const heartWriting = await InfoHeart.find()
-    .in("owner", ["테스트", "ㅇ"])
-    .populate("writingId");
-
-  return res.send(heartWriting);
+  if (exists) {
+    const heart = await InfoHeart.find({ owner: _id }).populate("writingId");
+    return res.send(heart);
+  } else {
+    return res.send("Nothing!");
+  }
 };
 export const myStoryHeart = async (req, res) => {
   const { _id } = req.session;
 
-  const heartWriting = await StoryHeart.find({ owner: _id }).populate(
-    "writingId"
-  );
+  // const heartWriting = await StoryHeart.find({ owner: _id }).populate(
+  //   "writingId"
+  // );
 
-  return res.send(heartWriting);
+  // return res.send(heartWriting);
+  const exists = await StoryHeart.find({ owner: _id });
+
+  if (exists) {
+    const heart = await StoryHeart.find({ owner: _id }).populate("writingId");
+    return res.send(heart);
+  } else {
+    return res.send("Nothing!");
+  }
 };
 export const clickHeart = async (req, res) => {
   const {
