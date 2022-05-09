@@ -213,7 +213,9 @@ export const clickHeart = async (req, res) => {
     { new: true }
   );
 
-  console.log(createinfoheart[0].onwer);
+  console.log(createinfoheart[0].onwer == undefined);
+  console.log(createinfoheart[0].onwer === undefined);
+
   if (createinfoheart[0].owner === undefined) {
     const updateHeart = await InfoHeart.findByIdAndUpdate(
       createinfoheart[0]._id,
