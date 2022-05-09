@@ -213,10 +213,10 @@ export const clickHeart = async (req, res) => {
     { new: true }
   );
 
-  console.log(createinfoheart[0].owner == undefined);
-  console.log(createinfoheart[0].owner === undefined);
+  console.log(createinfoheart[0].owner[0] == undefined);
+  console.log(createinfoheart[0].owner[0] === undefined);
 
-  if (createinfoheart[0].owner === undefined) {
+  if (createinfoheart[0].owner[0] === undefined) {
     console.log(`undefined ${createinfoheart}`);
 
     const updateHeart = await InfoHeart.findByIdAndUpdate(
@@ -229,7 +229,7 @@ export const clickHeart = async (req, res) => {
   } else {
     console.log(`defined ${createinfoheart}`);
 
-    if (user._id in createinfoheart[0].onwer) {
+    if (user._id in createinfoheart[0].onwer[0]) {
     } else {
       createinfoheart[0].owner.push(user._id);
       createinfoheart.save();
