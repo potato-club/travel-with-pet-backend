@@ -212,16 +212,22 @@ export const clickHeart = async (req, res) => {
     },
     { new: true }
   );
-  if (createinfoheart.owner === undefined) {
+
+  console.log(user._id in createinfoheart[0].onwer);
+  if (createinfoheart[0].owner === undefined) {
     const updateHeart = await InfoHeart.findByIdAndUpdate(
       createinfoheart[0]._id,
       {
         owner: user._id,
       }
     );
+  } else {
+    if (user._id in createinfoheart[0].onwer) {
+    } else {
+      createinfoheart[0].owner.push(user._id);
+      createinfoheart.save();
+    }
   }
-  createinfoheart.owner.push(user._id);
-  createinfoheart.save();
 
   return res.redirect(`/writing/info/${id}`);
 };
