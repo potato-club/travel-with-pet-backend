@@ -230,6 +230,7 @@ export const clickHeart = async (req, res) => {
   } else {
     console.log(`defined ${createinfoheart}`);
     console.log(`defined ${createinfoheart[0].owner}`);
+    console.log(`user._id ${user._id}`);
 
     if (user._id in createinfoheart[0].onwer) {
     } else {
