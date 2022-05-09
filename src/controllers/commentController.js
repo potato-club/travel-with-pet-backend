@@ -210,12 +210,21 @@ export const clickHeart = async (req, res) => {
     },
     { new: true }
   );
+  const updateHeart = await InfoHeart.findByIdAndUpdate(
+    createinfoheart[0]._id,
+    {
+      count: infoheart + 1,
+    },
+    { new: true }
+  );
   if (createinfoheart[0].owner[0] === undefined) {
     console.log(createinfoheart);
 
     const updateHeart = await InfoHeart.findByIdAndUpdate(
       createinfoheart[0]._id,
-      { count: infoheart + 1, owner: user._id },
+      {
+        owner: user._id,
+      },
       { new: true }
     );
     console.log(createinfoheart);
