@@ -218,9 +218,14 @@ export const clickHeart = async (req, res) => {
 
   if (createinfoheart[0].owner[0] === undefined) {
     console.log(`undefined ${createinfoheart}`);
-    createinfoheart[0].owner[0] = user._id;
-    createinfoheart.save();
-
+    // createinfoheart[0].owner[0] = user._id;
+    const updateHeart = await InfoHeart.findByIdAndUpdate(
+      createinfoheart[0]._id,
+      {
+        owner: user._id,
+      }
+    );
+    updateHeart.save();
     console.log(`undefined ${createinfoheart}`);
   } else {
     console.log(`defined ${createinfoheart}`);
